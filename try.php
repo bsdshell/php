@@ -3,6 +3,7 @@
 class MyClass
 {
     const NAME_SPACE = 'moneyengine_processors_credit_card_'; 
+    public $name = "MyClass";
     //const myname = strtolower(str_replace("/", "_", __NAMESPACE__)) . "_";
     //private $myname = strtolower("ABC"); 
     private $myname;  
@@ -29,6 +30,17 @@ class MyClass
 
 }
 
+
+class SubClass1 extends MyClass 
+{
+    public $name = "SubClass1";
+    public function show()
+    {
+        echo "name=" . $this->name . "\n";
+        //echo "parent name=" . parent::name . "\n";
+    }
+}
+
 $c = new MyClass();
 $c->myfun();
 
@@ -42,9 +54,6 @@ echo $out . "\n";
 //$myvar = 'dog\cat\cow';
 //$lower = strtolower(str_replace("\", "_", $myvar));
 
-$date = new \DateTime('now', new \DateTimeZone('UTC'));
-var_dump($date);
-echo $date->format('N') . "\n";
 
 $d1 = new \DateTime("2015-04-20 19:18:3.11", new \DateTimeZone('UTC'));
 
@@ -104,5 +113,62 @@ if($var2 === $var3)
 else
     echo "var2(0) !== var3(false)" . "\n";
  
+$id = 99;
+$query = sprintf("id < %d", $id);
+print_r("query=" . $query . "\n");
+
+
+echo "strval=" . strval("20.0044") . "\n";
+echo "strval=" . strval("335sdf") . "\n";
+
+$date = new \DateTime('now', new \DateTimeZone('UTC'));
+var_dump($date);
+
+$names = ["dog", "cat"];
+foreach($names as $name)
+{
+    echo "name=" . $name . "\n";
+}
+for($i=0; $i<sizeof($names); $i++)
+{
+    echo "arr name=" . $names[$i] . "\n";
+}
+
+$sub = new SubClass1();
+$sub->show();
+
+$myarray = [ 
+    "Portage"=>"val0",
+    "ELCaminoReal"=>"val1",
+    "PageMills"=>"val2",
+    "PageMills4"=>"val3",
+    "PageMills7"=>"val4"
+    ];
+foreach($myarray as $key => $val) {
+    echo $key . "=>" . $val . "\n";
+}
+
+class DumpClass 
+{
+    const c1 = 1;
+    const c2 = 2;
+    const c3 = 3;
+    const c4 = 4;
+    public $myarr = [ 
+        self::c1=>"Withdraw",
+        self::c2=>"Withdrew",
+        self::c3=>"Withdrawn",
+        self::c4=>"Withdrawal",
+        ];
+    public function show()
+    {
+        foreach($this->myarr as $key => $val)
+        {
+            echo $key . "=>" . $val . "\n";
+        }
+    }
+}
+$dc = new DumpClass();
+$dc->show();
 
 ?>
