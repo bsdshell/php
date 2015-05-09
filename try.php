@@ -171,4 +171,81 @@ class DumpClass
 $dc = new DumpClass();
 $dc->show();
 
+$arr[0] = "7";
+$darr = [
+    0=>"ElCaminoReal",
+    1=>"PageMillRoad",
+    2=>"Standford and U.C Berkely"
+    ];
+foreach($darr as $key => $val)
+{
+    if($key > 0)
+    echo $key . "=>" . $val . "\n";
+}
+for($i = 0; $i < sizeof($darr); $i++)
+{
+    echo "i=" . $i . "\n";
+    echo "v=" . $darr[$i] . "\n"; 
+}
+
+
+$day1 = new \DateTime("now", new \DateTimeZone('UTC'));
+
+for($num=0; $num<4; $num++)
+{
+    //num * day period
+    $interval = new DateInterval("P" . $num . "D"); 
+    $timeStamp = $day1->add($interval)->getTimestamp();
+    echo "\n";
+    var_dump($timeStamp);
+}
+
+$num = 0;
+$res = '0';
+$res00 = '000';
+ 
+if($res == $res00)
+    echo "\n" . "equal" . "\n";
+
+if( $num == $res) 
+    echo "\n" . "num equal" . "\n";
+
+if( $num == $res00) 
+    echo "\n" . "num equal" . "\n";
+
+
+$bob = new \DateTime("now", new \DateTimeZone('UTC'));
+$visitDate = new \DateTime("now", new \DateTimeZone('UTC'));
+
+$bob->setDate(2011, 8, 31);
+$bob->setTime(0, 0, 0);
+
+$visitDate->setDate(2011, 9, 1);
+$visitDate->setTime(0, 0, 0);
+
+$interval = $bob->diff($visitDate);
+echo "m=" . $interval->m . "\n";
+echo "d=" . $interval->d . "\n";
+
+
+$day1 = new \DateTime("2015-05-04", new \DateTimeZone('UTC'));
+$day2 = new \DateTime("2015-05-05", new \DateTimeZone('UTC'));
+$dt = $day1->diff($day2);
+echo "day diff=" . $dt->d . "\n";
+
+echo "day invert=" . $dt->invert . "\n";
+var_dump($dt);
+
+$day3 = new \DateTime("now", new \DateTimeZone('America/Los_Angeles'));
+echo $day3->format("Y-m-d H:i:s") . "\n";
+
+$day3 = new \DateTime("now", new \DateTimeZone('America/Mexico_City'));
+echo $day3->format("Y-m-d H:i:s") . "\n";
+
+$day3 = new \DateTime("now", new \DateTimeZone('UTC'));
+echo $day3->format("Y-m-d H:i:s") . "\n";
+
+
+
+
 ?>
